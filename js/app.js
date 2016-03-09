@@ -38,14 +38,17 @@ function getRequest(searchTerm){
 //showResults input = results(aka data.items), output = console.log(imageurls)
 function showResults(results) {
   var html = "";
-  var image = "";
-  //var link = "";
+  var image = ""; //the thumbnail url
+  var id = "";//the videoId to link via...
+  var link = "https://www.youtube.com/watch?v=";//this link.
+  
   for (i = 0; i < results.length; i++){
-    image = results[i].snippet.thumbnails.default.url;
-    html += "<img src=" + image + " " + "alt='thumbnail'" + " " + "width='240' height='180'>"
-    //html += '<p>' + image + '</p>';
+    image = results[i].snippet.thumbnails.high.url;//display the image
+    id = results[i].id.videoId;//assign the id to link to
+    html += "<a href=" + link + id + " " +"target='_blank'><img src=" + image + " " + "alt='thumbnail'" + " " + "width='480' height='360' class='videoImage'></a>"
   }
   $('#results-container').append(html);
+}
 
 //  $.each(results, function(index, value){
 //    //for now print the image url to the screen
@@ -55,4 +58,3 @@ function showResults(results) {
 //      thumbnailsArr.push(data.items[i].snippet.thumbnails.default.url);
 //    }
   //console.log(thumbnailsArr);
-}
