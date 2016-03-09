@@ -11,8 +11,7 @@ Bonus
 
 $(document).ready(function(){
   $('#search-form__input').on('click', function() {
-    $('#search-form__input').val(' ');
-    $('#search-form__input').css("color: black");
+    $('#search-form__input').val(' '); 
   });
   
   $('#search-form').submit(function(evt) {
