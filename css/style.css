@@ -2,7 +2,10 @@
   box-sizing: border-box;
 }
 
+#results-container {
+  text-align: center;
+}
+
 .videoImage {
-  margin: 0.5rem auto;
-  padding: 1rem;
+  margin: 0.5rem;
 }

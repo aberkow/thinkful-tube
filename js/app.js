@@ -37,6 +37,10 @@ function getRequest(searchTerm){
 
 //showResults input = results(aka data.items), output = console.log(imageurls)
 function showResults(results) {
+  
+  //perhaps try setting this up as an object...?
+  // var video = {html: "", image: "", etc}...
+  
   var html = "";
   var image = ""; //the thumbnail url
   var id = "";//the videoId to link via...
