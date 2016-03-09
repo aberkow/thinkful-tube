@@ -2,10 +2,43 @@
   box-sizing: border-box;
 }
 
+header {
+  background-color: #e52d27;
+  box-shadow: 0px 4px 2px lightgray;
+  position: fixed;
+  height: 4rem;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#search-form {
+  margin: 1.2rem 0 0 2rem;
+}
+
+#search-form__input {
+  border: 2px solid white;
+  box-shadow: 5px 3px 2px #b31217;
+}
+
+#search-form__submit {
+  margin-left: 1rem;
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: 5px 3px 2px #b31217;
+}
+
 #results-container {
+  margin-top: 6rem;
   text-align: center;
 }
 
 .videoImage {
   margin: 0.5rem;
+  cursor: pointer;
 }
+
+/*
+.videoImage a:hover {
+  background-color: green;
+}*/

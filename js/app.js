@@ -10,6 +10,11 @@ Bonus
 */
 
 $(document).ready(function(){
+  $('#search-form__input').on('click', function() {
+    $('#search-form__input').val(' ');
+    $('#search-form__input').css("color: black");
+  });
+  
   $('#search-form').submit(function(evt) {
     var searchTerm = $('#search-form__input').val();
     evt.preventDefault();
@@ -25,12 +30,16 @@ function getRequest(searchTerm){
     part: 'snippet',
     key: 'AIzaSyB39NC87BtguKgxPSOUecUOtXzT_8Z88Ts',
     q: searchTerm,
-    maxResults: 9
+    maxResults: 10
   };
+  
+  //'https://www.google.com/youtube?var1=true&var2=false#
   url = 'https://www.googleapis.com/youtube/v3/search';
   //execute the get request
+  debugger;
   $.getJSON(url, params, function(data){//NB - url needs to go before params
     //pass data.items to showResults as (results)
+    debugger;
     showResults(data.items);
   });
 }
