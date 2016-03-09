@@ -10,63 +10,49 @@ Bonus
 */
 
 $(document).ready(function(){
-  $.getJSON('https://www.googleapis.com/youtube/v3/search?part=snippet&q=clarinet&key=AIzaSyB39NC87BtguKgxPSOUecUOtXzT_8Z88Ts', function(data) {
-    var thumbnails = [];
-    for (i = 0; i < data.items.length; i++){
-      thumbnails.push(data.items[i].snippet.thumbnails.default.url);    
-    }
+  $('#search-form').submit(function(evt) {
+    var searchTerm = $('#search-form__input').val();
+    evt.preventDefault();
+    //console.log(searchTerm);
+    getRequest(searchTerm);
   });
-  
-  
-  
-  // $.getJSON('https://www.googleapis.com/youtube/v3/search?part=snippet&q=clarinet&key=AIzaSyB39NC87BtguKgxPSOUecUOtXzT_8Z88Ts') function(data){
-//   $.each(data.items, function(index, snippet) {
-//     
-//     console.log(snippet[0]);
-//   })
-   //   var itemsArr = data.items; 
-//   var thumbnailImage = itemsArr[0].snippet.thumbnails.default.url;
-//   console.log(thumbnailImage);
-   //logResults(itemsArr);
-   //console.log(itemsArr[0].snippet.thumbnails.default);
-  
 });
 
-//function searchByKeyword() {
-//  var results = YouTube.Search.list('id, snippet', {q: 'clarinet', max: 25});
-//  for (var i in results.item) {
-//    var item = results.item[i];
-//    console.log('[%s] Title: %s', item.id.videoId, item.snippet.title)
-//  }
-//}
-  
-
-function searchResults(results) {
-  $.each(results, function(index, ))
-}
-
-function getRequest() {
+// getRequest input = searchTerm, output = searchResults
+function getRequest(searchTerm){
+  //set up the get request params/url
   var params = {
     part: 'snippet',
-    key: AIzaSyB39NC87BtguKgxPSOUecUOtXzT_8Z88Ts,
-    q: 'clarinet'
+    key: 'AIzaSyB39NC87BtguKgxPSOUecUOtXzT_8Z88Ts',
+    q: searchTerm,
+    maxResults: 9
   };
   url = 'https://www.googleapis.com/youtube/v3/search';
-  $.getJSON(url, params, function(data) {
-    searchResults(data.items);  
+  //execute the get request
+  $.getJSON(url, params, function(data){//NB - url needs to go before params
+    //pass data.items to showResults as (results)
+    showResults(data.items);
   });
 }
 
+//showResults input = results(aka data.items), output = console.log(imageurls)
+function showResults(results) {
+  var html = "";
+  var image = "";
+  //var link = "";
+  for (i = 0; i < results.length; i++){
+    image = results[i].snippet.thumbnails.default.url;
+    html += "<img src=" + image + " " + "alt='thumbnail'" + " " + "width='240' height='180'>"
+    //html += '<p>' + image + '</p>';
+  }
+  $('#results-container').append(html);
 
-
-//function getRequst(searchTerm) {
-//  var params = {
-//    part: 'snippet',
-//    key: 'AIzaSyB39NC87BtguKgxPSOUecUOtXzT_8Z88Ts',
-//    q: searchTerm
-//  };
-//  url = 'https://www.googleapis.com/youtube/v3/search';
-//  $.getJSON(url, params, function(data){
-//    
+//  $.each(results, function(index, value){
+//    //for now print the image url to the screen
+//    //html += '<p>' + value + '</p>';
 //  })
-//}
+//    for (i = 0; i < data.items.length; i++) {
+//      thumbnailsArr.push(data.items[i].snippet.thumbnails.default.url);
+//    }
+  //console.log(thumbnailsArr);
+}
