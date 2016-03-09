@@ -20,18 +20,28 @@ $(document).ready(function(){
 
 // getRequest input = searchTerm, output = searchResults
 function getRequest(searchTerm){
+  //set up the get request params/url
   var params = {
     part: 'snippet',
     key: 'AIzaSyB39NC87BtguKgxPSOUecUOtXzT_8Z88Ts',
     q: searchTerm
   };
   url = 'https://www.googleapis.com/youtube/v3/search';
+  //execute the get request
   $.getJSON(url, params, function(data){//NB - url needs to go before params
-    console.log(data.items);
+    //pass data.items to showResults as (results)
+    showResults(data.items)
   });
 }
 
-
+//showResults input = results(aka data.items), output = console.log(imageurls)
+function showResults(results) {
+  var thumbnailsArr = [];
+    for (i = 0; i < data.items.length; i++) {
+      thumbnailsArr.push(data.items[i].snippet.thumbnails.default.url);
+    }
+  console.log(thumbnailsArr);
+}
 
 //function getRequest(searchTerm) {
 //    var params = {
@@ -45,9 +55,7 @@ function getRequest(searchTerm){
 //  });
 //}
 
-function showResults(results) {
-  
-}
+
 
 //  $.getJSON('https://www.googleapis.com/youtube/v3/search?part=snippet&q=clarinet&key=AIzaSyB39NC87BtguKgxPSOUecUOtXzT_8Z88Ts', function(data) {
 //    var thumbnails = [];
