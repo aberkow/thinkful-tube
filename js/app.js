@@ -57,7 +57,7 @@ function showResults(results) {
   for (i = 0; i < results.length; i++){
     image = results[i].snippet.thumbnails.high.url;//display the image
     id = results[i].id.videoId;//assign the id to link to
-    html += "<a href=" + link + id + " " +"target='_blank'><img src=" + image + " " + "alt='thumbnail'" + " " + "width='480' height='360' class='videoImage'></a>"
+    html += "<div class='results-container__item'><a href=" + link + id + " " +"target='_blank'><img src=" + image + " " + "alt='thumbnail'" + " " + "width='480' height='360' class='videoImage'></a></div>"
   }
   $('#results-container').append(html);
 }
