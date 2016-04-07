@@ -54,22 +54,11 @@ function showResults(results) {
     id: "",
     link: "https://www.youtube.com/watch?v="
   }
-  
-//  var html = "";
-//  var image = ""; //the thumbnail url
-//  var id = "";//the videoId to link via...
-//  var link = "https://www.youtube.com/watch?v=";//this link.
-  
+
   for (i = 0; i < results.length; i++){
     video.image = results[i].snippet.thumbnails.high.url;//display the image
     video.id = results[i].id.videoId;//assign the id to link to
     video.html += "<div class='results-container__item'><a href=" + video.link + video.id + " " +"target='_blank'><img src=" + video.image + " " + "alt='thumbnail'" + " " + "width='480' height='360' class='videoImage'></a></div>"
-    
-    
-    
-//    image = results[i].snippet.thumbnails.high.url;//display the image
-//    id = results[i].id.videoId;//assign the id to link to
-//    html += "<div class='results-container__item'><a href=" + link + id + " " +"target='_blank'><img src=" + image + " " + "alt='thumbnail'" + " " + "width='480' height='360' class='videoImage'></a></div>"
   }
   $('#results-container').append(video.html);
 }
