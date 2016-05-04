@@ -44,9 +44,9 @@ function getRequest(searchTerm){
 }
 
 //showResults input = results(aka data.items), output = console.log(imageurls)
-function showResults(results) {
-  //perhaps try setting this up as an object...?
-  // var video = {html: "", image: "", etc}...
+function showResults(results) {  
+  var youtubeVideo = new Video
+  
   
   var video = {
     html: "",
@@ -54,12 +54,7 @@ function showResults(results) {
     id: "",
     link: "https://www.youtube.com/watch?v="
   }
-  
-//  var html = "";
-//  var image = ""; //the thumbnail url
-//  var id = "";//the videoId to link via...
-//  var link = "https://www.youtube.com/watch?v=";//this link.
-  
+
   for (i = 0; i < results.length; i++){
     video.image = results[i].snippet.thumbnails.high.url;//display the image
     video.id = results[i].id.videoId;//assign the id to link to
