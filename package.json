@@ -1,0 +1,26 @@
+{
+  "name": "thinkful-tube",
+  "version": "1.0.0",
+  "description": "Calling the youtube api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mkdir": "mkdir -p build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aberkow/thinkful-tube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aberkow/thinkful-tube/issues"
+  },
+  "homepage": "https://github.com/aberkow/thinkful-tube#readme",
+  "dependencies": {
+    "jquery": "^2.2.3"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.0"
+  }
+}
