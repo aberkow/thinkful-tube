@@ -10,6 +10,8 @@
     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:js",
     "build:html": "npm run clean:html && cp index.html build/",
     "clean:html": "rm -f build/index.html",
+    "build:css": "npm run clean:css && cp 'css/style.css' build/",
+    "clean:css": "rm -f build/style.css",
     "build:js": "npm run build:js:unminified && npm run build:js:minified",
     "watch:js": "npm run watch:js:unminified && npm run watch:js:minified",
     "clean:js": "npm run clean:js:unminified && npm run clean:js:minified",
