@@ -5,7 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mkdir": "mkdir -p build"
+    "mkdir": "mkdir -p build",
+    "clean": "rm -rf build",
+    "build": "npm run clean && npm run mkdir && npm run build:js",
+    "build:js": "npm run build:js:unminified && npm run build:js:minified",
+    "watch:js": "npm run watch:js:unminified && npm run watch:js:minified",
+    "clean:js": "npm run clean:js:unminified && npm run clean:js:minified",
+    "build:js:unminified": "npm run clean:js:unminified && webpack",
+    "watch:js:unminified": "npm run build:js:unminified && webpack --watch",
+    "clean:js:unminified": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map",
+    "build:js:minified": "npm run clean:js:minified && webpack",
+    "watch:js:minified": "npm run build:js:minified && webpack --watch",
+    "clean:js:minified": "rm -f build/$npm_package_name.$npm_package_version.min.js build/$npm_package_name.$npm_package_version.min.js.map"
   },
   "repository": {
     "type": "git",
@@ -21,6 +32,7 @@
     "jquery": "^2.2.3"
   },
   "devDependencies": {
+    "uglify-js": "^2.6.2",
     "webpack": "^1.13.0"
   }
 }
